@@ -5,6 +5,9 @@ const adminRoutes = require("./routes/adminRoutes.js");
 const postsRoutes = require("./routes/postsRoutes.js");
 const indexRoutes = require("./routes/indexRoutes.js");
 
+// cors related
+const cors = require("cors");
+
 // dotenv related
 const dotenv = require("dotenv");
 dotenv.config({path:"./.env",encoding:"utf-8"});
@@ -41,6 +44,9 @@ mongoose.connect(dbURI,{useUnifiedTopology:true, useNewUrlParser:true})
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+// enable all cors requests
+app.use(cors());
 
 // logger middleware for all requests
 app.use(
