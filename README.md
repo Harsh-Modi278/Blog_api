@@ -37,6 +37,15 @@ Backend: Blog_api
 | DELETE      | /admin/posts/:postId            | Delete blog with postId                           | Yes             |
 | PUT         | /admin/posts/:postId/:commentId | Delete comment with commentId on blog with postId | Yes             |
 
+# Developement
+* You need to install Node to start the developement environment. Download Node here: [Node](https://nodejs.org/en/)
+* You need to setup a .env file in the root of the repository. The template for the same is as following:
+```
+ACCESS_TOKEN_SECRET = # your secret key for token
+DBURI = # mongoDB atlas link of your database
+ADMIN_KEY = # password for admin access
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
