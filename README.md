@@ -46,6 +46,12 @@ DBURI = # mongoDB atlas link of your database
 ADMIN_KEY = # password for admin access
 ```
 
+* Run
+```
+npm i
+npm run dev
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
