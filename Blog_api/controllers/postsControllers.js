@@ -18,7 +18,7 @@ const postsIndex_get = (req, res, next) => {
 };
 
 const postId_get = (req, res, next) => {
-  console.log(req.params);
+  // console.log(req.params);
   Post.findById(req.params.postId)
     .then((result) => res.json(result))
     .catch((err) => console.error(err));
@@ -28,17 +28,17 @@ const postsComment_post = (req, res, next) => {
   // Now passport has attached jwtpayload to the req.user
   // and we can get current user from req.user by deserialization
   // console.log({user:req.user});
-  console.log(req.params);
+  // console.log(req.params);
   const newCommentInstance = new Comment({
     text: req.body.text,
     postId: req.params.postId,
     authorId: req.user.id,
   });
-  console.log(newCommentInstance);
+  // console.log(newCommentInstance);
   let commentsArray = [];
   Post.findById(req.params.postId)
     .then((post) => {
-      console.log({ post });
+      // console.log({ post });
       commentsArray = post.commentsArray;
       commentsArray.push(newCommentInstance);
 

@@ -31,10 +31,6 @@ const {
 router.get(
   "/posts",
   passport.authenticate("jwt", { session: false }),
-  (req, res, next) => {
-    console.log("hello");
-    next();
-  },
   adminPosts_get
 );
 

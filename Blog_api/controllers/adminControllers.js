@@ -17,10 +17,10 @@ const passport = require("passport");
 const dotenv = require("dotenv");
 
 const adminPosts_get = (req, res, next) => {
-  console.log("here: ", { user: req.user });
+  // console.log("here: ", { user: req.user });
   User.findById(req.user.id)
     .then((user) => {
-      console.log({ user });
+      // console.log({ user });
       if (!user.isAdmin) return res.sendStatus(403);
       Post.find({})
         .sort({ createdAt: -1 })
@@ -68,10 +68,10 @@ const adminPostId_put = (req, res, next) => {
         if (req.body.hasOwnProperty("isPublished")) {
           update.isPublished = req.body.isPublished || false;
         }
-        console.log({ update });
+        // console.log({ update });
         Post.findByIdAndUpdate(req.params.postId, update, { new: true })
           .then((result) => {
-            console.log({ result });
+            // console.log({ result });
             return res.json(result);
           })
           .catch((err) => console.error(err));

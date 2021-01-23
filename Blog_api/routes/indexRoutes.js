@@ -4,7 +4,7 @@ const router = express.Router();
 
 // dotenv related
 const dotenv = require("dotenv");
-dotenv.config({path:"./.env",encoding:"utf-8"});
+dotenv.config({ path: "./.env", encoding: "utf-8" });
 
 // bcrypt related
 const bcryptjs = require("bcryptjs");
@@ -22,14 +22,19 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
 // controllers
-const {index_get, register_post, login_post, logout_post} = require("../controllers/indexControllers");
+const {
+  index_get,
+  register_post,
+  login_post,
+  logout_post,
+} = require("../controllers/indexControllers");
 
-router.get("/",index_get);
+router.get("/", index_get);
 
-router.post("/register",register_post);
+router.post("/register", register_post);
 
-router.post("/login",login_post);
+router.post("/login", login_post);
 
-router.post("/logout",logout_post);
+router.post("/logout", logout_post);
 
 module.exports = router;
