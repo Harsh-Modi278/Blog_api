@@ -10,7 +10,7 @@ const cors = require("cors");
 
 // dotenv related
 const dotenv = require("dotenv");
-dotenv.config({path:"./.env",encoding:"utf-8"});
+dotenv.config({ path: "./.env", encoding: "utf-8" });
 
 // mongoose related
 const mongoose = require("mongoose");
@@ -30,45 +30,34 @@ require("./config/passport-config.js")(passport);
 
 // connecting node.js app with database
 const dbURI = process.env.DBURI;
-mongoose.connect(dbURI,{useUnifiedTopology:true, useNewUrlParser:true})
-.then(()=>
-    {
-        const PORT = process.env.PORT||5000;
-        app.listen(PORT,
-        ()=>console.log(`Server started on port ${PORT}`)    
-        );
-    }
-)
-.catch((err)=>console.error({err}));
+mongoose
+  .connect(dbURI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+  })
+  .catch((err) => console.error({ err }));
 
-
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // enable all cors requests
 app.use(cors());
 
 // logger middleware for all requests
-app.use(
-    (req,res,next)=>
-    {
-        console.log();
-        console.log("New request made");
-        console.log("method:",req.method);
-        console.log("path:",req.path);
-        console.log("req.body",req.body);
-        next();
-    }
-    
-);
+app.use((req, res, next) => {
+  console.log();
+  console.log("New request made");
+  console.log("method:", req.method);
+  console.log("path:", req.path);
+  console.log("req.body", req.body);
+  console.log("req.params", req.params);
+  // console.log("headers: ", req.headers);
+  next();
+});
 
-app.use("/",indexRoutes);
+app.use("/", indexRoutes);
 
-app.use("/posts",postsRoutes);
+app.use("/posts", postsRoutes);
 
-app.use("/admin",adminRoutes);
-
-
-
-
-
+app.use("/admin", adminRoutes);
