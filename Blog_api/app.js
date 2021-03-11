@@ -4,6 +4,7 @@ const app = express();
 const adminRoutes = require("./routes/adminRoutes.js");
 const postsRoutes = require("./routes/postsRoutes.js");
 const indexRoutes = require("./routes/indexRoutes.js");
+const path = require("path");
 
 // cors related
 const cors = require("cors");
@@ -61,3 +62,15 @@ app.use("/", indexRoutes);
 app.use("/posts", postsRoutes);
 
 app.use("/admin", adminRoutes);
+
+// serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  // location where index.html is located
+  app.use(express.static("clien/build"));
+
+  app.get("*", (req, res, next) => {
+    // location where index.html is located
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}

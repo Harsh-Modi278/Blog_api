@@ -56,7 +56,7 @@ function passportInit(passport) {
 
   // jwtFromRequest (REQUIRED) Function :that accepts a request as the only parameter and returns either the JWT as a string or null
   // jwt_payload is an object literal containing the decoded JWT payload.
-  console.log(ExtractJWT.fromAuthHeaderAsBearerToken());
+  // console.log(ExtractJWT.fromAuthHeaderAsBearerToken());
   passport.use(
     new JWTStrategy(
       {
