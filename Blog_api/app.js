@@ -65,6 +65,7 @@ app.use("/admin", adminRoutes);
 
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {
+  console.log(process.env.NODE_ENV);
   // set static folder
   // location where index.html is located
   app.use(express.static("clien/build"));
