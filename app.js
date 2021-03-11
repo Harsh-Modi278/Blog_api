@@ -56,7 +56,7 @@ app.use((req, res, next) => {
   // console.log("headers: ", req.headers);
   next();
 });
-console.log(process.env.NODE_ENV);
+
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   console.log(process.env.NODE_ENV);
