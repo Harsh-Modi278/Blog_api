@@ -24,7 +24,7 @@ const AdminLogin = () => {
       body: JSON.stringify({ password: adminKey }),
     };
 
-    fetch("http://localhost:5000/admin/login", myInit)
+    fetch("/admin/login", myInit)
       .then((res) => {
         if (res.ok) return res.json();
         else {

@@ -1,13 +1,12 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import List from "./List.jsx";
 import useFetch from "../useFetch.js";
 import { UserContext } from "../UserContext.js";
 
-
 const Home = () => {
   const { user } = useContext(UserContext);
   const { data: blogs, isPending, error } = useFetch(
-    "http://localhost:5000" + ( (user && user.isAdmin) ? "/admin/posts" : "/posts")
+    "/" + (user && user.isAdmin ? "/admin/posts" : "/posts")
   );
   return (
     <div className="home">

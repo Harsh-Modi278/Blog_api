@@ -23,7 +23,7 @@ const Login = () => {
 
     let res, jsonRes;
     try {
-      res = await fetch("http://localhost:5000/login", myInit);
+      res = await fetch("/login", myInit);
       if (res.ok) {
         // console.log("res1:", res);
         jsonRes = await res.json();
