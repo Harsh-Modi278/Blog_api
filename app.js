@@ -57,12 +57,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", indexRoutes);
-
-app.use("/posts", postsRoutes);
-
-app.use("/admin", adminRoutes);
-
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   console.log(process.env.NODE_ENV);
@@ -75,3 +69,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+app.use("/", indexRoutes);
+
+app.use("/posts", postsRoutes);
+
+app.use("/admin", adminRoutes);
