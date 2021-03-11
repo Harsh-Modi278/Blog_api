@@ -34,7 +34,7 @@ function App() {
         cache: "default",
       };
 
-      fetch("http://localhost:5000/admin/login", myInit)
+      fetch("/admin/login", myInit)
         .then((res) => {
           if (res.ok) return res.json();
           else {
@@ -64,8 +64,8 @@ function App() {
               <Route exact path="/admin/blogs" component={Home} />
               <Route exact path="/admin/login" component={AdminLogin} />
               <Route path="/create">
-              <Create />
-            </Route>
+                <Create />
+              </Route>
               <Route path="/blogs/:id" component={BlogDetails}></Route>
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
