@@ -22,7 +22,7 @@ const Register = () => {
       body: JSON.stringify(formBody),
     };
 
-    fetch("/register", myInit)
+    fetch("/api/register", myInit)
       .then((res) => {
         return res.json();
       })

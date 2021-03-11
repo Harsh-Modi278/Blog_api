@@ -6,7 +6,7 @@ import { UserContext } from "../UserContext.js";
 const Home = () => {
   const { user } = useContext(UserContext);
   const { data: blogs, isPending, error } = useFetch(
-    user && user.isAdmin ? "/admin/posts" : "/posts"
+    user && user.isAdmin ? "/api/admin/posts" : "/api/posts"
   );
   return (
     <div className="home">

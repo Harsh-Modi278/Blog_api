@@ -34,7 +34,7 @@ function App() {
         cache: "default",
       };
 
-      fetch("/admin/login", myInit)
+      fetch("/api/admin/login", myInit)
         .then((res) => {
           if (res.ok) return res.json();
           else {

@@ -8,7 +8,7 @@ const Create = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("/admin/posts/", {
+    fetch("/api/admin/posts/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

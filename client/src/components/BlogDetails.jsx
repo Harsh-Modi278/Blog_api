@@ -7,7 +7,7 @@ import FlashMessages from "../components/FlashMessages.jsx";
 
 const BlogDetails = () => {
   const { id: blogId } = useParams();
-  const { data: blog, isPending, error } = useFetch(`/posts/${blogId}`);
+  const { data: blog, isPending, error } = useFetch(`/api/posts/${blogId}`);
 
   const len = blog ? blog.commentsArray.length : 0;
   const pubFlag = blog?.isPublished;
@@ -50,7 +50,7 @@ const BlogDetails = () => {
     };
 
     e.preventDefault();
-    fetch(`/posts/${blogId}/comments`, myInit)
+    fetch(`/api/posts/${blogId}/comments`, myInit)
       .then((res) => {
         if (res.ok) return res.json();
         throw Error("Unable to post comment");
@@ -85,7 +85,7 @@ const BlogDetails = () => {
       mode: "cors",
     };
 
-    fetch(`/admin/posts/${blogId}`, reqOptions)
+    fetch(`/api/admin/posts/${blogId}`, reqOptions)
       .then((res) => {
         if (res.ok) return res.json();
         setFailureMessages(["error in changing blog status"]);
@@ -117,7 +117,7 @@ const BlogDetails = () => {
       mode: "cors",
       cache: "default",
     };
-    fetch(`/admin/posts/${blogId}`, myInit)
+    fetch(`/api/admin/posts/${blogId}`, myInit)
       .then((res) => {
         if (res.ok) {
           history.push("/");
@@ -145,7 +145,7 @@ const BlogDetails = () => {
       mode: "cors",
       cache: "default",
     };
-    fetch(`admin/posts/${blogId}/${commentId}`, myInit)
+    fetch(`/api/admin/posts/${blogId}/${commentId}`, myInit)
       .then((res) => {
         if (res.ok) {
           setSuccessMessages([`Comment with id:${commentId} deleted`]);
