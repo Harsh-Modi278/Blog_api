@@ -14,7 +14,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
 const postsIndex_get = (req, res, next) => {
-  res.redirect("/");
+  res.redirect("/api");
 };
 
 const postId_get = (req, res, next) => {

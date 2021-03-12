@@ -122,7 +122,7 @@ const adminPostIdCommentId_delete = (req, res, next) => {
 };
 
 const adminLogin_post = (req, res, next) => {
-  // console.log({user:req.user});
+  console.log({ user: req.user });
   User.findById(req.user.id)
     .then((user) => {
       // console.log({user});
