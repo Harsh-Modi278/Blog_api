@@ -5,6 +5,7 @@ const adminRoutes = require("./routes/adminRoutes.js");
 const postsRoutes = require("./routes/postsRoutes.js");
 const indexRoutes = require("./routes/indexRoutes.js");
 const path = require("path");
+const morgan = require("morgan");
 
 // cors related
 const cors = require("cors");
@@ -29,6 +30,9 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 require("./config/passport-config.js")(passport);
 
+// logging
+app.use(morgan("tiny")); // logging framework
+
 // connecting node.js app with database
 const dbURI = process.env.DBURI;
 mongoose
@@ -46,16 +50,22 @@ app.use(express.json());
 app.use(cors());
 
 // logger middleware for all requests
-app.use((req, res, next) => {
-  console.log();
-  console.log("New request made");
-  console.log("method:", req.method);
-  console.log("path:", req.path);
-  console.log("req.body", req.body);
-  console.log("req.params", req.params);
-  // console.log("headers: ", req.headers);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log();
+//   console.log("New request made");
+//   console.log("method:", req.method);
+//   console.log("path:", req.path);
+//   console.log("req.body", req.body);
+//   console.log("req.params", req.params);
+//   // console.log("headers: ", req.headers);
+//   next();
+// });
+
+app.use("/api", indexRoutes);
+
+app.use("/api/posts", postsRoutes);
+
+app.use("/api/admin", adminRoutes);
 
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -69,8 +79,3 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-app.use("/api", indexRoutes);
-
-app.use("/api/posts", postsRoutes);
-
-app.use("/api/admin", adminRoutes);
