@@ -2,11 +2,13 @@
 
 REST API pratice excercise from [the Odin Project](https://www.theodinproject.com/courses/nodejs/lessons/blog-api)
 
+Live demo: https://mern-project-practice-odin.herokuapp.com/
+
 # Structure of the project
 
 Frontend: client
 
-Backend: Blog_api
+Backend: app.js
 
 # Backend Description
 
@@ -21,32 +23,35 @@ Backend: Blog_api
 
 # API routes
 
-| HTTP Method | Path                            | Remarks                                           | Login required? |
-| ----------- | ------------------------------- | ------------------------------------------------- | --------------- |
-| GET         | /                               | Base page of website-show published blogs         | No              |
-| POST        | /register                       | Submission of sign-up form                        | No              |
-| POST        | /logout                         | Logout                                            | Yes             |
-| POST        | /login                          | Submission of login form                          | No              |
-| GET         | /posts                          | Redirect to base page                             | No              |
-| GET         | /posts/:postId                  | See blog with postId and comments by users on it  | No              |
-| POST        | /posts/:postId/comments         | Post comment on the blog with postId              | Yes             |
-| GET         | /posts                          | Show published as well as unpublished blogs       | Yes             |
-| POST        | /admin/login                    | Submission of admin login form                    | Yes             |
-| POST        | /admin/posts                    | Submission of blog-form                           | Yes             |
-| PUT         | /admin/posts/:postId            | Edit blog with postId                             | Yes             |
-| DELETE      | /admin/posts/:postId            | Delete blog with postId                           | Yes             |
-| PUT         | /admin/posts/:postId/:commentId | Delete comment with commentId on blog with postId | Yes             |
+| HTTP Method | Path                                | Remarks                                           | Login required? |
+| ----------- | ----------------------------------- | ------------------------------------------------- | --------------- |
+| GET         | /api                                | Base page of website-show published blogs         | No              |
+| POST        | /api/register                       | Submission of sign-up form                        | No              |
+| POST        | /api/logout                         | Logout                                            | Yes             |
+| POST        | /api/login                          | Submission of login form                          | No              |
+| GET         | /api/posts                          | Redirect to base page                             | No              |
+| GET         | /api/posts/:postId                  | See blog with postId and comments by users on it  | No              |
+| POST        | /api/posts/:postId/comments         | Post comment on the blog with postId              | Yes             |
+| GET         | /api/posts                          | Show published as well as unpublished blogs       | Yes             |
+| POST        | /api/admin/login                    | Submission of admin login form                    | Yes             |
+| POST        | /api/admin/posts                    | Submission of blog-form                           | Yes             |
+| PUT         | /api/admin/posts/:postId            | Edit blog with postId                             | Yes             |
+| DELETE      | /api/admin/posts/:postId            | Delete blog with postId                           | Yes             |
+| PUT         | /api/admin/posts/:postId/:commentId | Delete comment with commentId on blog with postId | Yes             |
 
 # Developement
-* You need to install Node to start the developement environment. Download Node here: [Node](https://nodejs.org/en/)
-* You need to setup a .env file in the root of the repository. The template for the same is as following:
+
+- You need to install Node to start the developement environment. Download Node here: [Node](https://nodejs.org/en/)
+- You need to setup a .env file in the root of the repository. The template for the same is as following:
+
 ```
 ACCESS_TOKEN_SECRET = # your secret key for token
 DBURI = # mongoDB atlas link of your database
 ADMIN_KEY = # password for admin access
 ```
 
-* Run
+- Run
+
 ```
 npm i
 npm run dev
